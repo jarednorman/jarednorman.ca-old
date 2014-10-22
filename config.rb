@@ -1,4 +1,8 @@
+require 'pry'
 require 'normalize-scss'
+require 'lib/bolg'
+
+activate :bolg
 
 ###
 # Compass
