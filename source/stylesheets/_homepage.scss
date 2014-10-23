@@ -70,6 +70,34 @@
 }
 
 .homepage-about {
+  background-color: $yellow;
+  color: #444;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.075);
+}
+
+.homepage-about-row {
   @include outer-container;
-  background-color: $red;
+}
+
+.homepage-about-copy {
+  @include span-columns(6);
+
+  h1, h2 {
+    font-size: 1.85rem;
+    margin: 1.5em 0 0 0;
+  }
+}
+
+.homepage-about-features {
+  @include span-columns(6);
+  text-align: center;
+}
+
+.homepage-about-feature-list {
+  list-style-type: none;
+  padding: 0;
+
+  li + li {
+    margin-top: 1rem;
+  }
 }
