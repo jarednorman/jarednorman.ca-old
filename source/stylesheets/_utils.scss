@@ -1,0 +1,25 @@
+@mixin inline-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  li { display: inline; }
+}
+
+@mixin vertical-align($centered-selector) {
+  height: 100%;
+  text-align: center;
+
+  &:before,
+  #{$centered-selector} {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 100%;
+    vertical-align: middle;
+    margin-left: -0.25em;
+  }
+}

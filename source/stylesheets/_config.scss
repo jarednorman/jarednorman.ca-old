@@ -1,0 +1,7 @@
+// Neat
+$max-width: rem(1000);
+
+// Responsive
+$huge-only: new-breakpoint(min-width rem(1024));
+$large-up: new-breakpoint(max-width rem(768));
+$medium-up: new-breakpoint(max-width rem(640));

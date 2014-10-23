@@ -1,0 +1,75 @@
+.homepage-splash {
+  background-color: $light-blue;
+  color: #fff;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.075);
+}
+
+.homepage-primary-navigation {
+  @include outer-container;
+  padding-top: 2rem;
+  line-height: 4rem;
+
+  a {
+    &:link,
+    &:visited {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:active {
+      color: rgba(255, 255, 255, 0.75);
+    }
+  }
+}
+
+.homepage-primary-navigation-site-title,
+.homepage-primary-navigation-list {
+  @include span-columns(6);
+}
+
+.homepage-primary-navigation-site-title {
+  font-size: 2rem;
+  margin: 0;
+
+  span {
+    font-weight: 300;
+  }
+}
+
+.homepage-primary-navigation-list {
+  @include inline-list;
+  text-align: right;
+
+  li {
+    &:after {
+      content: "\2715";
+      color: rgba(255, 255, 255, 0.75);
+      margin: 0 0.25rem;
+      font-size: 0.6rem;
+      vertical-align: 5%;
+    }
+
+    &:last-child:after {
+      display: none;
+    }
+  }
+}
+
+.homepage-splash-message {
+  @include outer-container;
+  @include vertical-align('.homepage-splash-text');
+  position: relative;
+  top: -6rem;
+}
+
+.homepage-splash-text {
+  text-align: center;
+  font-size: 2rem;
+  padding-top: 1.5em;
+}
+
+.homepage-about {
+  @include outer-container;
+  background-color: $red;
+}
