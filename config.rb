@@ -17,6 +17,8 @@ activate :bolg
 # Page options, layouts, aliases and proxies
 ###
 
+page "/blog/*", layout: :blog_post
+
 # Per-page layout changes:
 #
 # With no layout

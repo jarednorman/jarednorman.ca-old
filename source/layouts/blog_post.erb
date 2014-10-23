@@ -1,0 +1,9 @@
+<% wrap_layout :layout do %>
+  <article class="blog-post">
+    <h1><%= current_page.data[:title] %></h1>
+    <small>Published <%= current_page.data[:published_date] %> by <%= current_page.data[:author] %></small>
+    <div class="blog-post-body">
+      <%= yield %>
+    </div>
+  </article>
+<% end %>

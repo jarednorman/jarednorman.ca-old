@@ -5,8 +5,9 @@ class Bolg < Middleman::Extension
 
   def manipulate_resource_list(resources)
     resources.each do |resource|
-      # if it is a blog post
-      #   rewrite resource.destination_path based on resource.data
+      if /^blog\//.match(resource.path)
+        resource.destination_path = "blog/#{resource.data["published_date"].to_default_s}-#{resource.data["title"].parameterize}.html"
+      end
     end
   end
 end
