@@ -8,6 +8,8 @@
   @include outer-container;
   padding-top: 2rem;
   line-height: 4rem;
+  position: relative;
+  z-index: 1;
 
   a {
     &:link,
