@@ -1,0 +1,22 @@
+.homepage-work {
+  background-color: $blue;
+  color: #fff;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.075);
+}
+
+.homepage-work-content {
+  @include outer-container;
+
+  h1, h2 {
+    font-size: 1.85rem;
+    margin: 1.5em 0 0 0;
+  }
+}
+
+.homepage-work-info {
+  @include span-columns(4);
+}
+
+.homepage-work-list {
+  @include span-columns(8);
+}

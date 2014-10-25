@@ -9,5 +9,9 @@
 @import "palette";
 @import "utils";
 
-@import "homepage";
+@import "homepage/splash";
+@import "homepage/about";
+@import "homepage/work";
+@import "homepage/blog";
+
 @import "blog_post";
