@@ -24,6 +24,10 @@ module Bolg
       @body ||= resource.render layout: false
     end
 
+    def path
+      "/#{resource.destination_path}"
+    end
+
     private
     attr_reader :resource
   end

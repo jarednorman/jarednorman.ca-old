@@ -116,6 +116,7 @@ title: Jared Norman
   .homepage-blog-post-summaries
     - bolg_posts.each do |post|
       .homepage-blog-post-large
-        %h1= post.title
-        .homepage-blog-post-date= post.published_at
+        %h1
+          %a{href: post.path}= post.title
+        .homepage-blog-post-date= post.published_at.strftime "%d %B %Y"
         .homepage-blog-post-summary!= post.summary
