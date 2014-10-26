@@ -1,6 +1,6 @@
 .homepage-about {
   background-color: $yellow;
-  color: #444;
+  color: $black;
   text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.075);
 }
 
@@ -10,7 +10,7 @@
 
 .homepage-about-copy,
 .homepage-about-features {
-  font-size: 1.111em;
+  font-size: 1rem;
   font-weight: normal;
   padding-bottom: 2rem;
 
@@ -25,7 +25,6 @@
 
 .homepage-about-copy {
   @include span-columns(7);
-  font-size: 1rem;
 }
 
 .homepage-about-features {
@@ -36,7 +35,12 @@
   list-style-type: none;
   padding: 0;
 
-  li + li {
-    margin-top: 1rem;
+  li {
+    border-left: 2px solid $black;
+    padding-left: 1em;
+
+    & + li {
+      margin-top: 1rem;
+    }
   }
 }

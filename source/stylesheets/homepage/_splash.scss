@@ -61,13 +61,15 @@
 
 .homepage-splash-message {
   @include outer-container;
-  @include vertical-align('.homepage-splash-text');
-  position: relative;
-  top: -6rem;
 }
 
 .homepage-splash-text {
-  text-align: center;
   font-size: 2rem;
   font-weight: normal;
+  margin: 3em 0 5em 0;
+
+  em {
+    font-weight: 300;
+    font-style: italic;
+  }
 }
