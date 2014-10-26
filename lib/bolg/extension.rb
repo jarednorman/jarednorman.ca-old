@@ -1,14 +1,13 @@
 require 'lib/bolg/bolg_data'
+require 'lib/bolg/helpers'
 
 module Bolg
   class Extension < Middleman::Extension
-    def initialize(app, options_hash={}, &block)
-      super
-    end
+    self.defined_helpers = [Bolg::Helpers]
 
     def after_configuration
-      @bolg = Bolg::BolgData.new
-      @app.sitemap.register_resource_list_manipulator(:"bolg_posts", @bolg, false)
+      @app.bolg = bolg = Bolg::BolgData.new
+      @app.sitemap.register_resource_list_manipulator(:"bolg_posts", bolg, false)
     end
   end
 end
