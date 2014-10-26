@@ -6,6 +6,6 @@ module Bolg::Helpers
   def bolg_posts
     bolg.posts.map do |resource|
       Bolg::PostPresenter.new(resource)
-    end
+    end.sort_by(&:published_at).reverse
   end
 end

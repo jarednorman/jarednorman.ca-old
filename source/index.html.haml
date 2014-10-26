@@ -114,9 +114,12 @@ title: Jared Norman
             A skeleton project for building applications with <a href="http://www.love2d.org/">Love2D</a>
 %section#blog.homepage-blog
   .homepage-blog-post-summaries
-    - bolg_posts.each do |post|
-      .homepage-blog-post-large
+    %h1 From the Blog
+    - bolg_posts.first(3).each do |post|
+      %article.homepage-blog-post-large
         %h1
           %a{href: post.path}= post.title
         .homepage-blog-post-date= post.published_at.strftime "%d %B %Y"
-        .homepage-blog-post-summary!= post.summary
+        .homepage-blog-post-summary
+          != post.summary
+          %a.homepage-blog-post-permalink{href: post.path} [keep reading]
