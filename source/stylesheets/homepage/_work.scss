@@ -14,9 +14,45 @@
 }
 
 .homepage-work-info {
-  @include span-columns(4);
+  @include span-columns(5);
 }
 
 .homepage-work-list {
-  @include span-columns(8);
+  @include span-columns(7);
+  padding: 1.5rem 0;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+}
+
+.homepage-work-list-item {
+  font-size: 1.2rem;
+  border-left: 2px solid white;
+  padding-left: 1rem;
+
+  h1 {
+    font-size: 1.2rem;
+    font-style: italic;
+  }
+
+  p {
+    margin: 0
+  }
+
+  a {
+    font-size: 1rem;
+
+    &:link,
+    &:visited {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    &:hover,
+    &:active {
+      color: white;
+    }
+  }
 }

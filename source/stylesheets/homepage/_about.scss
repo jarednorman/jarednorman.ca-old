@@ -8,18 +8,28 @@
   @include outer-container;
 }
 
-.homepage-about-copy {
-  @include span-columns(6);
+.homepage-about-copy,
+.homepage-about-features {
+  font-size: 1.111em;
+  font-weight: normal;
+  padding-bottom: 2rem;
 
   h1, h2 {
     font-size: 1.85rem;
+    font-weight: 300;
+    font-style: italic;
     margin: 1.5em 0 0 0;
+    line-height: 1.5;
   }
 }
 
+.homepage-about-copy {
+  @include span-columns(7);
+  font-size: 1rem;
+}
+
 .homepage-about-features {
-  @include span-columns(6);
-  text-align: center;
+  @include span-columns(5);
 }
 
 .homepage-about-feature-list {
