@@ -63,6 +63,8 @@ set :js_dir, 'javascripts'
 
 set :images_dir, 'images'
 
+set :fonts_dir,  "fonts"
+
 # Development-specific configuration
 configure :development do
   activate :livereload, apply_js_live: false, apply_css_live: false
