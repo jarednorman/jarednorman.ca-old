@@ -136,3 +136,4 @@ title: Jared Norman
                 - posts.sort_by{|p|p.published_at}.each do |post|
                   %li
                     %a{href:post.path}= post.title
+!= partial 'shared/footer'

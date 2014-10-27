@@ -1,0 +1,63 @@
+.footer {
+  background-color: $green;
+  padding: 2.5rem;
+  color: white;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.175);
+  text-align: center;
+  font-size: 1.5rem;
+
+  p {
+    margin: 0;
+  }
+}
+
+.footer-row {
+  @include outer-container;
+}
+
+.footer-contact-me {
+
+  a {
+    &:link,
+    &:visited {
+      color: white;
+      font-weight: normal;
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:active {
+      text-decoration: underline;
+    }
+  }
+}
+
+.footer-social-links {
+
+  a {
+    &:link,
+    &:visited {
+      color: white;
+      font-weight: normal;
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:active {
+      color: rgba(white, 0.75);
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.075);
+    }
+  }
+}
+
+.footer-social-links i {
+  margin: 0 0.125rem;
+}
+
+.footer-copyright {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: normal;
+  letter-spacing: 0.05em;
+  padding: 1.5rem 0 0 0;
+}
