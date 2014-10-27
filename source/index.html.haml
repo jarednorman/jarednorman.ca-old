@@ -113,8 +113,8 @@ title: Jared Norman
           %p
             A skeleton project for building applications with <a href="http://www.love2d.org/">Love2D</a>
 %section#blog.homepage-blog
+  %h1 From the Blog
   .homepage-blog-post-summaries
-    %h1 From the Blog
     - bolg_posts.first(3).each do |post|
       %article.homepage-blog-post-large
         %h1
@@ -123,3 +123,16 @@ title: Jared Norman
         .homepage-blog-post-summary
           != post.summary
           %a.homepage-blog-post-permalink{href: post.path} [keep reading]
+  %h1 The Archives
+  .homepage-blog-archives
+    - bolg_posts.group_by{|post| post.published_at.year}.each do |year, posts|
+      .homepage-blog-archive-year
+        %h2= year
+        .homepage-blog-archive-year-months
+          - posts.group_by{|p| p.published_at.month}.sort_by{|month, posts| month}.each do |month, posts|
+            .homepage-blog-archive-month
+              %h3= Date::MONTHNAMES[month]
+              %ul.homepage-blog-archive-month-post-list
+                - posts.sort_by{|p|p.published_at}.each do |post|
+                  %li
+                    %a{href:post.path}= post.title

@@ -1,9 +1,7 @@
 .homepage-blog {
-  margin: 3rem 0;
-}
-
-.homepage-blog-post-summaries {
   @include outer-container;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 
   > h1 {
     font-size: 1.3rem;
@@ -12,9 +10,13 @@
   }
 }
 
+.homepage-blog-post-summaries {
+  @include clearfix;
+}
+
 .homepage-blog-post-large {
   @include span-columns(4);
-  @include omega(4n);
+  @include omega(3n);
   border-top: 3px solid $black;
   padding: 1.5rem 0;
 
@@ -60,4 +62,45 @@
 }
 
 .homepage-blog-post-permalink {
+}
+
+.homepage-blog-archives {
+}
+
+.homepage-blog-archive-year h2 {
+  font-size: 1em;
+  border-bottom: 2px solid $black;
+  margin: 0;
+}
+
+.homepage-blog-archive-month {
+  @include span-columns(3);
+  @include omega(4n);
+
+  h3 {
+    font-size: 1em;
+  }
+}
+
+.homepage-blog-archive-month-post-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 0;
+  font-size: 0.9em;
+
+  li {
+    a {
+      &:link,
+      &:visited {
+        font-weight: normal;
+        text-decoration: none;
+        color: rgba($black, 0.75);
+      }
+
+      &:hover,
+      &:active {
+        color: $black;
+      }
+    }
+  }
 }

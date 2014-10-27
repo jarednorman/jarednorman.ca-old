@@ -1,5 +1,5 @@
 ---
-published_date: 2014-10-28
+published_date: 2014-11-02
 title: Functional Programming vs. "Functional" Programming
 author: Jared Norman
 ---
