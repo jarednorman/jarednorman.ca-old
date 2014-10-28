@@ -1,0 +1,50 @@
+.simple-header-primary-navigation {
+  @include outer-container;
+  line-height: 4rem;
+  padding: 1rem 0;
+
+  a {
+    &:link,
+    &:visited {
+      color: $blue;
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:active {
+    }
+  }
+}
+
+.simple-header-primary-navigation-list,
+.simple-header-primary-navigation-site-title {
+  @include span-columns(6);
+}
+
+.simple-header-primary-navigation-site-title {
+  font-size: 2rem;
+  margin: 0;
+
+  span {
+    font-weight: 300;
+  }
+}
+
+.simple-header-primary-navigation-list {
+  @include inline-list;
+  text-align: right;
+
+  li {
+    &:after {
+      content: "\2715";
+      color: rgba($blue, 0.75);
+      margin: 0 0.25rem;
+      font-size: 0.6rem;
+      vertical-align: 3%;
+    }
+
+    &:last-child:after {
+      display: none;
+    }
+  }
+}

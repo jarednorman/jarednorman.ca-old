@@ -1,10 +1,47 @@
 .blog-post {
   max-width: 800px;
   margin: 0 auto;
+  padding-bottom: 2rem;
+  color: $black;
+}
+
+.blog-post-title {
+  font-size: 3rem;
+  text-align: center;
+  margin: 1rem 0 3rem 0;
+}
+
+.blog-post-meta {
+  font-size: 0.75rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: normal;
+  padding: 2rem 0;
 }
 
 .blog-post-body {
+  font-size: 1.2rem;
+
+  h1, h2, h3, h4, h5 {
+    line-height: 1.2;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.075);
+  }
+
   & * + * {
-    margin: 1.5em 0 0 0;
+    margin: 1.5rem 0 0 0;
+  }
+
+  a {
+    &:link,
+    &:visited {
+      color: $red;
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:active {
+      text-decoration: underline;
+    }
   }
 }

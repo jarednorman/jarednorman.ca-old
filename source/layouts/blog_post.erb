@@ -1,9 +1,14 @@
 <% wrap_layout :layout do %>
+  <%= partial "shared/simple_header" %>
   <article class="blog-post">
-    <h1><%= current_page.data[:title] %></h1>
-    <small>Published <%= current_page.data[:published_date] %> by <%= current_page.data[:author] %></small>
+    <h1 class="blog-post-title"><%= current_page.data[:title] %></h1>
     <div class="blog-post-body">
       <%= yield %>
     </div>
+    <div class="blog-post-meta">
+      Published <%= current_page.data[:published_date].strftime("%d %B %Y") %>
+      by <%= current_page.data[:author] %>
+    </div>
   </article>
+  <%= partial "shared/footer" %>
 <% end %>
