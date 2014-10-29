@@ -1,0 +1,153 @@
+---
+published_date: 2014-10-22
+title: Blogging with Middleman the Hard Way
+author: Jared Norman
+---
+
+While Jekyll has become quite popular as a static site generator due to its use
+in GitHub pages, but those coming from Rails world might also appreciate the
+fully tilt/sprockets enabled [Middleman](http://middlemanapp.com/). While I'm a
+big fan of just stripping static site generation down and using a
+[`Makefile`](https://github.com/jhawthorn/site/blob/master/Makefile), if you're
+used to the full sprockets pipeline, or are expecting the site to one day get
+converted to a Rails app then Middleman can make your life easier.
+
+_This blog post is not about setting up a blog with Middleman because [there is
+an official extension for that](http://middlemanapp.com/basics/blogging/), it
+is about writing your own custom extension for Middleman._
+
+The goal here is to get allow us to easily provide a simple blog post index on
+our homepage and rewrite our blog post URLs to the desired format.
+
+## Just a bunch of classes
+
+The first thing we need is an extension we can activate. I'm going to ignore
+the details the file structure, but the simplest thing to do is throw
+everything in `lib/`.
+
+<% code("ruby") do %>
+module Blog
+  class Extension < Middleman::Extension
+    self.defined_helpers = [Blog::Helpers]
+
+    def after_configuration
+      @app.blog = blog = Blog::BlogData.new
+      @app.sitemap.register_resource_list_manipulator(:blog_posts, blog, false)
+    end
+  end
+end
+::Middleman::Extensions.register(:blog, Blog::Extension)
+<% end %>
+
+Here's what happened: We subclassed `Middleman::Extension`. Middleman's
+not-super-well-documented extension API instantiates our class, checks the
+`defined_helpers` on the class and mixes those modules in and then call our
+`after_configuration` callback at the appropriate time.
+
+The critical part of the hook we defined is the call to
+`@app.sitemap.register_resource_list_manipulator`. The tells our from Middleman
+that before it gets to far in the build pipeline, it needs to consult our
+friend `:blog_posts`, which we're setting to an instance of Blog::BlogData we
+just created.
+
+Finally, we register it as an extension, so we can throw `activate :blog` in
+our `config.rb` and make it all happening.
+
+So, what's Blog::BlogData?
+
+<% code("ruby") do %>
+module Blog
+  class BlogData
+    attr_reader :posts
+
+    def initialize
+      @posts = []
+    end
+
+    def manipulate_resource_list(resources)
+      @posts = []
+
+      resources.each do |resource|
+        if /^blog\//.match(resource.path)
+          resource.destination_path =
+            "blog/#{resource.data["published_date"].to_default_s}-#{resource.data["title"].parameterize}.html"
+          @posts << resource
+        end
+      end
+    end
+  end
+end
+<% end %>
+
+Our "resource manipulator" doesn't do anything crazy. It keeps track of the
+things that look like blog posts (by checking the path) and then rewrites their
+destination path. It then saves them in an array because we'll need them.
+
+Finally we need helpers so we can get at them in our post index.
+
+<% code("ruby") do %>
+module Blog::Helpers
+  attr_accessor :blog
+
+  def blog_posts
+    blog.posts.map do |resource|
+      Blog::PostPresenter.new(resource)
+    end.sort_by(&:published_at).reverse
+  end
+end
+<% end %>
+
+This is the helper module we referenced earler. It adds the `attr_accessor` so
+that we can set/get our instance of `Blog::BlogData`, and the fives us a
+`blog_posts` method that exposes our posts in our views. The only neat thing
+here is that is wraps our blog post resources in a presenter class. It looks like this:
+
+<% code("ruby") do %>
+module Blog
+  class PostPresenter
+    def initialize(resource)
+      @resource = resource
+    end
+
+    def title
+      resource.data[:title]
+    end
+
+    def author
+      resource.data[:author]
+    end
+
+    def published_at
+      resource.data[:published_date]
+    end
+
+    def summary
+      Nokogiri::HTML(body).css('p').first.to_html
+    end
+
+    def body
+      @body ||= resource.render layout: false
+    end
+
+    def path
+      "/#{resource.destination_path}"
+    end
+
+    private
+    attr_reader :resource
+  end
+end
+<% end %>
+
+This dealie does nothing even slightly interesting with the exception of the
+summary, which parses the rendered version of the post and grabs the first paragraph.
+
+## Summary
+
+It's as easy as that. There's [a plethora of
+extensions](http://directory.middlemanapp.com/#/extensions/all) (I've used
+[tumblargh](https://github.com/jasonwebster/tumblargh) a tonne) that hook into
+all different parts of the Middleman extension API and provide cool
+functionality.  Their source is a great resource for navigating Middleman's
+extension API.
+
