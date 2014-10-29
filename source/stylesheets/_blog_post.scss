@@ -45,4 +45,9 @@
       color: $dark-green;
     }
   }
+
+  blockquote {
+    border-left: 4px solid rgba($black, 0.5);
+    padding-left: 1rem;
+  }
 }
