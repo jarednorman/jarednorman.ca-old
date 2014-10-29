@@ -5,6 +5,7 @@ require 'normalize-scss'
 require 'lib/bolg'
 
 activate :bolg
+activate :syntax
 
 ###
 # Compass
