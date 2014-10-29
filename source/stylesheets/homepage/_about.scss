@@ -1,6 +1,6 @@
 .homepage-about {
-  background-color: $yellow;
-  color: $black;
+  background-color: $red;
+  color: white;
   text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.075);
 }
 
@@ -36,7 +36,7 @@
   padding: 0;
 
   li {
-    border-left: 2px solid $black;
+    border-left: 2px solid white;
     padding-left: 1em;
 
     & + li {

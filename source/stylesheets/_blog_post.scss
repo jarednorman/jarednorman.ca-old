@@ -25,7 +25,7 @@
 
   h1, h2, h3, h4, h5 {
     line-height: 1.2;
-    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.075);
+    text-shadow: 2px 2px 0px rgba($black, 0.075);
   }
 
   & * + * {
@@ -35,13 +35,14 @@
   a {
     &:link,
     &:visited {
-      color: $red;
+      color: rgba($green, 0.8);
+      font-weight: normal;
       text-decoration: none;
     }
 
     &:hover,
     &:active {
-      text-decoration: underline;
+      color: $dark-green;
     }
   }
 }

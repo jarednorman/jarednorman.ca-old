@@ -1,7 +1,7 @@
 .simple-header-primary-navigation {
   @include outer-container;
   line-height: 4rem;
-  padding: 1rem 0;
+  padding: 2rem 0;
 
   a {
     &:link,
@@ -33,6 +33,7 @@
 .simple-header-primary-navigation-list {
   @include inline-list;
   text-align: right;
+  font-weight: normal;
 
   li {
     &:after {
