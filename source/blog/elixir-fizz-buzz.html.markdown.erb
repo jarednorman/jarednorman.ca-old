@@ -1,0 +1,24 @@
+---
+published_date: 2014-10-28
+title: FizzBuzz in Elixir
+author: Jared Norman
+---
+
+Anyone who knows me knows that I really love [Elixir](http://elixir-lang.org/).
+Here, presented without comment, is
+[FizzBuzz](http://c2.com/cgi/wiki?FizzBuzzTest) implemented in Elixir.
+
+<% code("elixir") do %>
+defmodule FizzBuzz do
+  def fizz do
+    (1..100)
+    |> Enum.map(&buzz/1)
+    |> Enum.each(&IO.puts/1)
+  end
+
+  defp buzz(i) when rem(i, 15) == 0, do: "FizzBuzz"
+  defp buzz(i) when rem(i, 5) == 0, do: "Buzz"
+  defp buzz(i) when rem(i, 3) == 0, do: "Fizz"
+  defp buzz(i), do: Integer.to_string(i)
+end
+<% end %>
